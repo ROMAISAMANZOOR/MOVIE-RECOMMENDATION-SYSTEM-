@@ -1,0 +1,6 @@
+venv
+*.pkl
+*.h5
+*.zip
+*.csv
+__pycache__/
