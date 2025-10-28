@@ -2,6 +2,18 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import os
+import gdown
+
+file_id = "1Oft5O5lFharAL2zeOLQPNoal3Lbzl6At"
+output_path = "similarity.pkl"
+
+if not os.path.exists(output_path):
+    st.info("🔽 Downloading similarity.pkl from Google Drive...")
+    gdown.download(f"https://drive.google.com/uc?id={file_id}", output_path, quiet=False)
+    st.success("✅ Download complete.")
+else:
+    print("✅ similarity.pkl already exists.")
 
 def fetch_poster(movie_id):
     response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=0844fcc900fd1e91ce851aeea83f3296&language=en-US'.format(movie_id))
